@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vam.mapper.AdminMapper">
+
+
+<!-- 강좌 등록 -->
+<insert id="classEnroll">
+	insert into class (cate_code, creator_id, class_name, class_price, class_info, class_tag, class_discount)
+	values (#{cate_code}, #{creator_id}, #{class_name}, #{class_price}, #{class_info}, #{class_tag}, #{class_discount})
+</insert>
+
+</mapper>
