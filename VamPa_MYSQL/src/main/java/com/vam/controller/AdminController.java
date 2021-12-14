@@ -1,14 +1,18 @@
 package com.vam.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vam.model.ClassVO;
 import com.vam.model.CreatorVO;
 import com.vam.service.AdminService;
@@ -35,16 +39,27 @@ public class AdminController {
 	}
 	
 
-	/* 상품 등록 페이지 접속 */
+	/* 강좌 관리 페이지 접속 */
     @RequestMapping(value = "classManage", method = RequestMethod.GET)
     public void goodsManageGET() throws Exception{
-        logger.info("상품 등록 페이지 접속");
+        logger.info("강좌 관리 페이지 접속");
     }
     
-    /* 상품 등록 페이지 접속 */
+    /* 강좌 등록 페이지 접속 */
     @RequestMapping(value = "classEnroll", method = RequestMethod.GET)
-    public void goodsEnrollGET() throws Exception{
-        logger.info("상품 등록 페이지 접속");
+    public void goodsEnrollGET(Model model) throws Exception{
+        logger.info("강좌 등록 페이지 접속");
+        
+        ObjectMapper objm = new ObjectMapper();
+        
+        List list = adminService.cateList();
+        
+        String cateList = objm.writeValueAsString(list);
+        
+        model.addAttribute("cateList", cateList);
+        
+        logger.info("변경 전......" + list);
+        logger.info("변경 후......" + cateList); 
     }
     
     /* 크리에이터 등록 페이지 접속 */

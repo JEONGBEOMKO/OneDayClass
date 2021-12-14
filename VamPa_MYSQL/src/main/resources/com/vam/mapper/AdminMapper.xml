@@ -11,4 +11,10 @@
 	values (#{cate_code}, #{creator_id}, #{class_name}, #{class_price}, #{class_info}, #{class_tag}, #{class_discount})
 </insert>
 
+<select id="cateList" resultType="com.vam.model.CateVO">
+
+	select * from class_category order by cate_code
+
+</select>
+
 </mapper>

@@ -8,7 +8,7 @@ public class ClassVO {
 	private int class_id;
 	
 	/* 카테고리 코드 */
-	private int cate_code;
+	private String cate_code;
 	
 	/* 크리에이터_id */
 	private int creator_id;
@@ -43,11 +43,11 @@ public class ClassVO {
 		this.class_id = class_id;
 	}
 
-	public int getCate_code() {
+	public String getCate_code() {
 		return cate_code;
 	}
 
-	public void setCate_code(int cate_code) {
+	public void setCate_code(String cate_code) {
 		this.cate_code = cate_code;
 	}
 

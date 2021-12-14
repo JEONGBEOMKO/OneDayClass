@@ -16,11 +16,12 @@ public class AdminMapperTests {
 	private AdminMapper mapper;
 	
 	/* 강좌등록 */
+	
 	@Test
 	public void classEnrollTest() throws Exception{
 		ClassVO oneclass = new ClassVO();
 		
-		oneclass.setCate_code(2101);
+		oneclass.setCate_code("2101");
 		oneclass.setCreator_id(2);
 		oneclass.setClass_name("노드JS");
 		oneclass.setClass_price(10000);
@@ -33,5 +34,12 @@ public class AdminMapperTests {
 		mapper.classEnroll(oneclass);
 		
 	}
-
+	
+	
+	/* 카테고리 리스트 */
+//	@Test
+//	public void cateListTest() throws Exception{
+//		System.out.println("cateList()........"+ mapper.cateList());
+//	}
+//	
 }
