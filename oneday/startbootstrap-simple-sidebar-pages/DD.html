@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>onedayclass</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/AA.css" rel="stylesheet" />
+        <link href="css/cart.css" rel="stylesheet" /> 
+        
+                 <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+    <!-- Custom stylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/main.css"/>
+
+    <!-- fontawesom -->
+    <script src="https://kit.fontawesome.com/a1e0f49770.js" crossorigin="anonymous"></script>
+
+    <!-- js -->
+    <script src="js/main.js"></script>
+
+
+
+    </head>
+    <body>
+
+<!-- MAIN HEADER -->
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <!-- LOGO-->
+            <div class="col-md-4">
+                <div class="header-logo">
+                    <a href="#" class="logo">
+                        <img src="./img/LOGO-removebg-preview.png">
+                    </a>&emsp;&ensp;
+                    <ul class="header-category">
+                        <li class="active"><a href="#">클래스</a></li>&ensp;
+                        <li><a href="#">스토어</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /LOGO -->
+
+            <!-- SEARCH BAR-->
+            <div class="col-md-5 col-xs-7">
+                <div class="header-search">
+                    <form>
+                        <select class="input-select">
+                            <option value="0">검색</option>
+                            <option value="1">작가</option>
+                            <option value="2">클래스</option>
+                        </select>
+                        <input class="input" placeholder="검색어를 입력해주세요">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <!-- /SEARCH BAR -->
+
+            <!-- ACCOUNT -->
+            <div class="col-md-3 col-xs-5">
+                <div class="account">
+                    <ul class="account-section">
+                        <li><a href="#">크리에이터</a></li>&emsp;
+                        <li><a href="#">로그인</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /ACCOUNT -->
+        </div>
+    </div>
+</div>
+<!-- /MAIN HEADER -->
+
+
+
+
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light">My Page</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="AA.html">내정보</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="BB.html">개인정보수정</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="CC.html">위시리스트</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="DD.html">장바구니</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="EE.html">주문내역</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"></a>
+                </div>
+            </div>
+        
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn" style="background-color : #FFCFCB"id="sidebarToggle">메뉴보기</button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="#!"></a></li>
+                                <!--<li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#!">Action</a>
+                                        <a class="dropdown-item" href="#!">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#!">Something else here</a>
+                                    </div>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                
+                <form>
+                    <center>
+                        <h1 class="mt-4">나의 장바구니</h1>
+                        <i class="fas fa-shopping-cart fa-2x"></i>
+                        </center> 
+
+                <!--우정-->
+        <div class="content_area">
+          
+            <!-- 장바구니 리스트 -->
+            <div class="content_middle_section"></div>
+            <!-- 장바구니 가격 합계 -->
+            <!-- cartInfo -->
+            <div class="content_totalCount_section">
+            
+               <!-- 체크박스 전체 여부 -->
+               <div class="all_check_input_div">
+                  <input type="checkbox" class="all_check_input input_size_20" checked="checked"><span class="all_chcek_span">전체선택</span>
+               </div>
+               
+               <table class="subject_table">
+                  <caption>표 제목 부분</caption>
+                  <tbody>
+   
+                     <tr>
+                        <th class="td_width_1"></th>
+                        <th class="td_width_2"></th>
+                        <th class="td_width_3">상품명</th>
+                        <th class="td_width_4">가격</th>
+                        
+                        <th class="td_width_4">합계</th>
+                        <th class="td_width_4">삭제</th>
+                     </tr>
+                  </tbody>
+               </table>
+               <table class="cart_table">
+                  <caption>표 내용 부분</caption>
+                  <tbody>
+                     <c:forEach items="${cartInfo}" var="ci">
+                        <tr>
+                           <td class="td_width_1 cart_info_td">
+                              <input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
+                              <input type="hidden" class="individual_bookPrice_input" value="${ci.class_price}">
+                              <input type="hidden" class="individual_salePrice_input" value="${ci.salePrice}">
+                              <input type="hidden" class="individual_bookCount_input" value="${ci.class_count}">
+                              <input type="hidden" class="individual_totalPrice_input" value="${ci.salePrice * ci.class_count}">
+                              <input type="hidden" class="individual_point_input" value="${ci.point}">
+                              <input type="hidden" class="individual_totalPoint_input" value="${ci.totalPoint}">
+                           </td>
+                           <td class="td_width_2"></td>
+                           <td class="td_width_3">${ci.class_name}</td>
+                           <td class="td_width_4 price_td">
+                              <del>정가 : <fmt:formatNumber value="${ci.class_price}" pattern="#,### 원" /></del><br>
+                              판매가 : <span class="red_color"><fmt:formatNumber value="${ci.salePrice}" pattern="#,### 원" /></span><br>
+                              마일리지 : <span class="green_color"><fmt:formatNumber value="${ci.point}" pattern="#,###" /></span>
+                           </td>
+                           <td class="td_width_4 table_text_align_center">
+                              <div class="table_text_align_center quantity_div">
+                                 <input type="text" value="${ci.class_count}" class="quantity_input">   
+                                 <button class="quantity_btn plus_btn">+</button>
+                                 <button class="quantity_btn minus_btn">-</button>
+                              </div>
+                              <a class="quantity_modify_btn" data-cartId="${ci.cartId}">변경</a>
+                           </td>
+                           <td class="td_width_4 table_text_align_center">
+                              <fmt:formatNumber value="${ci.salePrice * ci.class_count}" pattern="#,### 원" />
+                           </td>
+                           <td class="td_width_4 table_text_align_center delete_btn"><button class="delete_btn" data-cartid="${ci.cartId}">삭제</button></td>
+                        </tr>
+                     </c:forEach>
+                  </tbody>
+               </table>
+               <table class="list_table">
+               </table>
+            </div>
+            <!-- 가격 종합 -->
+            <div class="content_total_section">
+               <div class="total_wrap">
+                  <table>
+                     <tr>
+                        <td>
+                           <table>
+                              <tr>
+                                 <td>총 상품 가격</td>
+                                 <td>
+                                    <span class="totalPrice_span">70000</span> 원
+                                 </td>
+                              </tr>
+                                                       
+                              <tr>
+                                 <td>총 주문 상품수</td>
+                                 <td><span class="totalKind_span"></span>종 <span class="totalCount_span"></span>권</td>
+                              </tr>
+                           </table>
+                        </td>
+                        <td>
+                           <table>
+                              <tr>
+                                 <td></td>
+                                 <td></td>
+                              </tr>
+                           </table>                     
+                        </td>
+                     </tr>
+                  </table>
+                  <div class="boundary_div">구분선</div>
+                  <table>
+                     <tr>
+                        <td>
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <strong>총 결제 예상 금액</strong>
+                                    </td>
+                                    <td>
+                                       <span class="finalTotalPrice_span">70000</span> 원
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td>
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <strong>총 적립 예상 마일리지</strong>
+                                    
+                                    </td>
+                                    <td>
+                                       <span class="totalPoint_span">70000</span> 원
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <!-- 구매 버튼 영역 -->
+            <div class="content_btn_section">
+               <a>주문하기</a>
+            </div>
+<!--우정끝-->
+   
+                  
+                </form>
+                </div>
+                </div>
+
+                </div>
+            </div>
+         
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+
+
+         <!-- FOOTER -->
+    <footer id="footer">
+        <!-- top footer -->
+        <div class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer">
+                            <h3 class="footer-title">About Us</h3>
+                            <p>비트캠프 디지털컨버전스 기반 딥러닝 학습을 이용한 웹 개발자 양성과정 A / 팀: 이름이름</p>
+                        </div>
+                        <div class="footer">
+                            <h3 class="footer-title">Information</h3>
+                            <ul class="footer-links">
+                                <li><a href="#">About Us</a></li>&emsp;
+                                <li><a href="#">Contact Us</a></li>&emsp;
+                                <li><a href="#">Privacy Policy</a></li>&emsp;
+                                <li><a href="#">Orders and Returns</a></li>&emsp;
+                                <li><a href="#">Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /top footer -->
+
+        <!-- bottom footer -->
+        <div id="bottom-footer" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="footer-payments">
+                            <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+                            <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+                        </ul>
+                        <span class="copyright">
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <a href="https://colorlib.com" target="_blank">Colorlib </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /bottom footer -->
+    </footer>
+    <!-- /FOOTER -->
+
+    </body>
+</html>
