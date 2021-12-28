@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.vam.mapper.CartMapper">
+
+<!-- 카트 추가 -->
+<insert id="addCart">
+
+	insert into class_cart(memberId, class_id, class_count)
+	values(#{memberId}, #{class_id}, 1) 
+
+</insert>
+
+
+<!-- 카트 삭제 -->
+<delete id="deleteCart">
+
+	delete from class_cart where cartId = #{cartId}
+
+</delete>
+
+<!-- 카트 수량 수정 -->
+<update id="modifyCount">
+
+	update class_cart set class_count=#{class_count} where cartId = #{cartId}
+
+</update>
+
+
+<!-- 카트 목록 -->
+<!-- 카트 목록 -->
+<select id="getCart" resultType="com.vam.model.CartDTO">
+
+   <!-- select a.cartId, a.memberId, a.class_id, a.class_count, b.class_name, b.class_price, b.class_discount, b.class_thumb_filename 
+   from class_cart a left outer join class b on a.class_id = b.class_id
+   where memberId = #{memberId}-->
+   
+   select a.cartId, a.memberId, a.class_id, a.class_count, b.class_name, b.class_price, b.class_discount, b.class_thumb_filename 
+   from class b left outer join class_cart a on a.class_id = b.class_id
+   where memberId = #{memberId}   
+
+</select>
+
+<!-- 카트 확인 -->
+<select id="checkCart" resultType="com.vam.model.CartDTO">
+
+	select * from class_cart 
+	where memberId = #{memberId} and class_id = #{class_id}
+
+</select>
+	
+  </mapper>

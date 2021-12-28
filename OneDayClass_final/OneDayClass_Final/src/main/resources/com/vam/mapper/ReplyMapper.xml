@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.vam.mapper.ReplyMapper">
+  
+  <!-- 댓글 조회 -->
+  <select id="readReply" resultType="com.vam.model.ReplyVO">
+  	select a.class_id, a.reply_id, a.reply_memo, a.memberId, b.memberName, a.reply_date
+	from class_reply a left outer join class_member b on a.memberId = b.memberId
+	where class_id=#{class_id}
+  </select>
+  
+  <!-- 댓글 작성 -->
+  <insert id="writeReply">
+<!--   	insert into class_reply(class_id, reply_id, reply_memo, memberId, reply_date) 
+	values(#{class_id}, #{reply_id}, #{reply_memo}, #{memberId}, #{reply_date}); -->
+	
+	insert into class_reply(class_id, reply_memo, memberId)
+	values(#{class_id}, #{reply_memo}, #{memberId})
+	
+  </insert>
+  
+  <!-- 댓글 수정 -->
+  <update id="updateReply" parameterType="com.vam.model.ReplyVO">
+  	update class_reply set reply_memo=#{reply_memo}
+  	where reply_id=#{reply_id}
+  </update>
+	
+  <!-- 댓글 삭제 -->	
+  <delete id="deleteReply" parameterType="com.vam.model.ReplyVO">
+  	delete from class_reply
+  	where reply_id=#{reply_id}
+  </delete>
+	
+  </mapper>

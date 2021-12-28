@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vam.mapper.MainMapper">
+
+ <select id="classList2" resultType="com.vam.model.EclassVO">
+	select * from class a left outer join class_category c on a.cate_code=c.cate_code 
+	order by class_register_date desc limit #{startRow}, 5;
+
+</select>
+
+ <select id="classList1" resultType="com.vam.model.EclassVO">
+	select * from class a left outer join class_category c on a.cate_code=c.cate_code 
+	order by hit desc limit #{startRow}, 5;
+
+</select>
+
+
+   <!-- criteria(검색조건) -->
+   <sql id="criteria">
+
+        <trim prefix="where (" suffix=")" prefixOverrides="AND">
+           <foreach item="type" collection="typeArr">
+              <trim prefix="AND">
+                 <choose>
+                    <when test="type == 'A'.toString()">
+                       <trim prefixOverrides="or">
+                          <foreach collection="classArr" item="class_id">
+                             <trim prefix="or">
+                                a.cate_code = #{cate_code}
+                             </trim>
+                          </foreach>                    
+                       </trim>
+                    </when>
+                    <when test="type == 'C'.toString()">
+                       creator_name like concat ('%', #{keyword}, '%')
+                    </when>                 
+                    <when test="type == 'T'.toString()">
+                       class_name like concat ('%', #{keyword}, '%')
+                    </when>                 
+                 </choose>
+              </trim>
+           </foreach>
+        </trim>
+   
+   </sql>
+
+<!-- 상품 검색 -->
+<select id="classList" resultType="com.vam.model.EclassVO">
+
+   select class_id, class_name, class_thumb_filename, class_tag, creator_name, a.creator_id, c.cate_name, a.cate_code, b.creator_intro, a.class_brief, a.class_price, class_discount
+   from class a left outer join class_creator b on a.creator_id = b.creator_id
+   left outer join class_category c on a.cate_code = c.cate_code
+   <include refid="criteria"></include>
+   order by class_id 
+   limit #{skip}, #{amount}
+
+</select>
+
+<!-- 상품 총 개수 -->
+<select id="classTotal" resultType="int">
+
+       select count(*) from class
+       
+   <include refid="criteria"></include>
+   
+</select>
+
+  <!-- 작가 id 리스트 요청 -->
+<select id="classIdList" resultType="String">
+
+   select class_id from class where class_name like concat ('%', #{keyword}, '%')
+
+</select>
+
+<!-- 강좌 정보 -->
+<select id="classInfo" resultType="com.vam.model.EclassVO">
+
+   select class_id, class_name, a.creator_name, a.creator_id, c.cate_name, a.cate_code, b.creator_intro, a.class_brief, a.class_price, a.class_discount,
+   a.class_brief, a.class_level, a.class_info1, a.class_info2, a.class_info3, a.class_curriculum1, a.class_curriculum2, a.class_curriculum3, a.class_curriculum4,
+   a.creator_phone, a.creator_sns1, a.creator_sns2, a.creator_sns3, a.creator_info, a.class_tag, a.tool_filename, 
+   a.class_thumb_filename, a.class_img1_filename,  a.class_img2_filename, a.class_img3_filename, a.creator_profile_filename  
+   from class a left outer join class_creator b on a.creator_id = b.creator_id
+   left outer join class_category c on a.cate_code = c.cate_code
+   where class_id = ${class_id}   
+
+</select>
+
+<update id="update">
+	update class set hit=hit + 1 where class_id = ${class_id}
+</update>
+
+<!-- 강좌 정보 -->
+<select id="classCate2" resultType="com.vam.model.CateVO">
+
+	select b.cate_name from class_category b where b.cate_code = 
+	(select distinct a.cate_parent from class_category a left outer join class c on a.cate_code=c.cate_code 
+	where a.cate_code=(select cate_code from class where class_id=${class_id}))
+
+</select>
+
+<select id="classCate1" resultType="com.vam.model.CateVO">
+
+	select cate_name from class_category where cate_code = (select cate_parent from class_category 
+	where cate_code = (select distinct a.cate_parent from class_category a left outer join class c on a.cate_code=c.cate_code 
+	where a.cate_code=(select cate_code from class where class_id=${class_id})));
+
+</select>
+
+<!-- 카테고리 페이지 -->
+<sql id="cate_prefix">
+	<!-- <trim prefix="where"> -->
+		<choose>
+			<when test="cate_code == 1100 || cate_code == 1200 || cate_code == 1300 || cate_code == 2100">
+               where c.cate_parent=#{cate_code}
+            </when>
+            <when test="cate_code == 1 || cate_code == 2">
+            	where a.cate_code like concat (#{cate_code}, '%') 
+            </when>
+            <when test="cate_code == 0">
+            	where a.cate_code like concat ('%', #{cate_code}, '%') 
+            </when>
+            <otherwise>
+            	where a.cate_code=#{cate_code}
+            </otherwise>                 
+		</choose>
+	<!-- </trim> -->
+</sql>
+
+ <select id="cateIntro"  resultType="com.vam.model.EclassVO">
+
+	select * from class a left outer join class_category c on a.cate_code=c.cate_code 
+	<include refid="cate_prefix"></include> 
+	order by class_id limit #{startRow}, #{endRow}
+
+</select>
+
+
+<select id="cateCate0" resultType="com.vam.model.CateVO">
+	select distinct a.cate_name from class_category a left outer join class c 
+	on a.cate_code=c.cate_code where a.cate_code=#{cate_code};
+</select>
+
+<select id="cateCate1" resultType="com.vam.model.CateVO">
+	select b.cate_name from class_category b where b.cate_code = (select distinct a.cate_parent from class_category a left outer join class c on a.cate_code=c.cate_code 
+	where a.cate_code=#{cate_code});
+</select>
+
+<select id="cateCate2" resultType="com.vam.model.CateVO">
+	select cate_name from class_category where cate_code = (select cate_parent from class_category 
+	where cate_code= (select distinct a.cate_parent from class_category a left outer join class c 
+	on a.cate_code=c.cate_code where a.cate_code=${cate_code}));
+</select>
+
+<select id="dbCountAll" resultType="int">
+	select count(*) from class a left outer join class_category c on a.cate_code=c.cate_code 
+	<include refid="cate_prefix"></include>
+</select>
+
+
+
+
+</mapper>
+
+
+
+
+
+

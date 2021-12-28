@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.vam.mapper.WishMapper">
+  
+	<!-- 카트 추가 -->
+	<insert id="addWish">
+	
+		insert into class_wish(memberId, class_Id)
+		values(#{memberId}, #{class_id}) 
+	
+	</insert>
+	
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteWish">
+	
+		delete from class_wish where wishId = #{wishId}
+	
+	</delete>
+	
+	
+	<!-- 카트 목록 -->
+	<select id="getWish" resultType="com.vam.model.WishDTO">	
+		
+		select a.wishId, a.memberId, a.class_id, b.class_name, b.class_price, b.class_discount, b.class_thumb_filename
+		from class_wish a left outer join class b on a.class_id = b.class_id
+		where memberId = #{memberId}
+	
+	</select>
+	
+	<!-- 카트 확인 -->
+	<select id="checkWish" resultType="com.vam.model.WishDTO">
+	
+		select * from class_wish 
+		where memberId = #{memberId} and class_id = #{class_id}
+	
+	</select>
+	
+	
+  </mapper>
+ 
